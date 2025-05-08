@@ -3,9 +3,15 @@
 #include "include/ui.h"
 #include "include/tasks.h"
 
+#define TASKS_FILE "tasks.txt"
+
 int main() {
     init_ui();
-    load_sample_tasks();  // Optional, just for demo
+    
+    // Try to load tasks from file, if it fails, load sample tasks
+    if (!load_tasks_from_file(TASKS_FILE)) {
+        load_sample_tasks();
+    }
 
     int ch;
     while ((ch = get_input()) != 'q') {
@@ -15,7 +21,7 @@ int main() {
         draw_ui();
         usleep(100000);  // Sleep for 100ms to prevent high CPU usage
     }
-
+    
     cleanup_tasks();
     end_ui();
     return 0;

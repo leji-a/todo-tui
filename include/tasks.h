@@ -13,5 +13,7 @@ void delete_task(int index);
 void toggle_done(int index);
 void load_sample_tasks();
 void cleanup_tasks();
+int save_tasks_to_file(const char *filename);
+int load_tasks_from_file(const char *filename);
 
 #endif
